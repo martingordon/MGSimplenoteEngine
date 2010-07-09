@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA41B10911BE6C2E00410288 /* MGSimplenoteController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B10311BE6C2E00410288 /* MGSimplenoteController.h */; };
+		AA41B10A11BE6C2E00410288 /* MGSimplenoteController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B10411BE6C2E00410288 /* MGSimplenoteController.m */; };
+		AA41B10B11BE6C2E00410288 /* MGSimplenoteSyncSession.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B10511BE6C2E00410288 /* MGSimplenoteSyncSession.h */; };
+		AA41B10C11BE6C2E00410288 /* MGSimplenoteSyncSession.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B10611BE6C2E00410288 /* MGSimplenoteSyncSession.m */; };
+		AA41B10D11BE6C2E00410288 /* MGSimplenoteSyncStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B10711BE6C2E00410288 /* MGSimplenoteSyncStatus.h */; };
+		AA41B10E11BE6C2E00410288 /* MGSimplenoteSyncStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B10811BE6C2E00410288 /* MGSimplenoteSyncStatus.m */; };
+		AA41B11D11BE6C3900410288 /* MGCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B10F11BE6C3900410288 /* MGCallback.h */; };
+		AA41B11E11BE6C3900410288 /* MGCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B11011BE6C3900410288 /* MGCallback.m */; };
+		AA41B11F11BE6C3900410288 /* MGSimplenote.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B11111BE6C3900410288 /* MGSimplenote.h */; };
+		AA41B12011BE6C3900410288 /* MGSimplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B11211BE6C3900410288 /* MGSimplenote.m */; };
+		AA41B12111BE6C3900410288 /* MGSimplenoteCredentialStore.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B11311BE6C3900410288 /* MGSimplenoteCredentialStore.h */; };
+		AA41B12211BE6C3900410288 /* MGSimplenoteCredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B11411BE6C3900410288 /* MGSimplenoteCredentialStore.m */; };
+		AA41B12311BE6C3900410288 /* MGSimplenoteIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B11511BE6C3900410288 /* MGSimplenoteIndex.h */; };
+		AA41B12411BE6C3900410288 /* MGSimplenoteIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B11611BE6C3900410288 /* MGSimplenoteIndex.m */; };
+		AA41B12511BE6C3900410288 /* MGSimplenoteLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B11711BE6C3900410288 /* MGSimplenoteLogin.h */; };
+		AA41B12611BE6C3900410288 /* MGSimplenoteLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B11811BE6C3900410288 /* MGSimplenoteLogin.m */; };
+		AA41B12711BE6C3900410288 /* MGSNObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B11911BE6C3900410288 /* MGSNObject.h */; };
+		AA41B12811BE6C3900410288 /* MGSNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B11A11BE6C3900410288 /* MGSNObject.m */; };
+		AA41B12911BE6C3900410288 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B11B11BE6C3900410288 /* NSData+Base64.h */; };
+		AA41B12A11BE6C3900410288 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B11C11BE6C3900410288 /* NSData+Base64.m */; };
+		AA41B13911BE6C6B00410288 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B12C11BE6C6B00410288 /* JSON.h */; };
+		AA41B13A11BE6C6B00410288 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B12D11BE6C6B00410288 /* NSObject+SBJSON.h */; };
+		AA41B13B11BE6C6B00410288 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B12E11BE6C6B00410288 /* NSObject+SBJSON.m */; };
+		AA41B13C11BE6C6B00410288 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B12F11BE6C6B00410288 /* NSString+SBJSON.h */; };
+		AA41B13D11BE6C6B00410288 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B13011BE6C6B00410288 /* NSString+SBJSON.m */; };
+		AA41B13E11BE6C6B00410288 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B13111BE6C6B00410288 /* SBJSON.h */; };
+		AA41B13F11BE6C6B00410288 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B13211BE6C6B00410288 /* SBJSON.m */; };
+		AA41B14011BE6C6B00410288 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B13311BE6C6B00410288 /* SBJsonBase.h */; };
+		AA41B14111BE6C6B00410288 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B13411BE6C6B00410288 /* SBJsonBase.m */; };
+		AA41B14211BE6C6B00410288 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B13511BE6C6B00410288 /* SBJsonParser.h */; };
+		AA41B14311BE6C6B00410288 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B13611BE6C6B00410288 /* SBJsonParser.m */; };
+		AA41B14411BE6C6B00410288 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = AA41B13711BE6C6B00410288 /* SBJsonWriter.h */; };
+		AA41B14511BE6C6B00410288 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B13811BE6C6B00410288 /* SBJsonWriter.m */; };
+		AA747D9F0F9514B9006C5449 /* MGSimplenoteEngine_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* MGSimplenoteEngine_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA41B10311BE6C2E00410288 /* MGSimplenoteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSimplenoteController.h; sourceTree = "<group>"; };
+		AA41B10411BE6C2E00410288 /* MGSimplenoteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSimplenoteController.m; sourceTree = "<group>"; };
+		AA41B10511BE6C2E00410288 /* MGSimplenoteSyncSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSimplenoteSyncSession.h; sourceTree = "<group>"; };
+		AA41B10611BE6C2E00410288 /* MGSimplenoteSyncSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSimplenoteSyncSession.m; sourceTree = "<group>"; };
+		AA41B10711BE6C2E00410288 /* MGSimplenoteSyncStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSimplenoteSyncStatus.h; sourceTree = "<group>"; };
+		AA41B10811BE6C2E00410288 /* MGSimplenoteSyncStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSimplenoteSyncStatus.m; sourceTree = "<group>"; };
+		AA41B10F11BE6C3900410288 /* MGCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGCallback.h; path = Classes/MGCallback.h; sourceTree = "<group>"; };
+		AA41B11011BE6C3900410288 /* MGCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGCallback.m; path = Classes/MGCallback.m; sourceTree = "<group>"; };
+		AA41B11111BE6C3900410288 /* MGSimplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSimplenote.h; path = Classes/MGSimplenote.h; sourceTree = "<group>"; };
+		AA41B11211BE6C3900410288 /* MGSimplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSimplenote.m; path = Classes/MGSimplenote.m; sourceTree = "<group>"; };
+		AA41B11311BE6C3900410288 /* MGSimplenoteCredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSimplenoteCredentialStore.h; path = Classes/MGSimplenoteCredentialStore.h; sourceTree = "<group>"; };
+		AA41B11411BE6C3900410288 /* MGSimplenoteCredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSimplenoteCredentialStore.m; path = Classes/MGSimplenoteCredentialStore.m; sourceTree = "<group>"; };
+		AA41B11511BE6C3900410288 /* MGSimplenoteIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSimplenoteIndex.h; path = Classes/MGSimplenoteIndex.h; sourceTree = "<group>"; };
+		AA41B11611BE6C3900410288 /* MGSimplenoteIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSimplenoteIndex.m; path = Classes/MGSimplenoteIndex.m; sourceTree = "<group>"; };
+		AA41B11711BE6C3900410288 /* MGSimplenoteLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSimplenoteLogin.h; path = Classes/MGSimplenoteLogin.h; sourceTree = "<group>"; };
+		AA41B11811BE6C3900410288 /* MGSimplenoteLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSimplenoteLogin.m; path = Classes/MGSimplenoteLogin.m; sourceTree = "<group>"; };
+		AA41B11911BE6C3900410288 /* MGSNObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSNObject.h; path = Classes/MGSNObject.h; sourceTree = "<group>"; };
+		AA41B11A11BE6C3900410288 /* MGSNObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSNObject.m; path = Classes/MGSNObject.m; sourceTree = "<group>"; };
+		AA41B11B11BE6C3900410288 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "Classes/NSData+Base64.h"; sourceTree = "<group>"; };
+		AA41B11C11BE6C3900410288 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "Classes/NSData+Base64.m"; sourceTree = "<group>"; };
+		AA41B12C11BE6C6B00410288 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		AA41B12D11BE6C6B00410288 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		AA41B12E11BE6C6B00410288 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		AA41B12F11BE6C6B00410288 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		AA41B13011BE6C6B00410288 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		AA41B13111BE6C6B00410288 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		AA41B13211BE6C6B00410288 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		AA41B13311BE6C6B00410288 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		AA41B13411BE6C6B00410288 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		AA41B13511BE6C6B00410288 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		AA41B13611BE6C6B00410288 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		AA41B13711BE6C6B00410288 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		AA41B13811BE6C6B00410288 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* MGSimplenoteEngine_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSimplenoteEngine_Prefix.pch; sourceTree = "<group>"; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libMGSimplenoteEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMGSimplenoteEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libMGSimplenoteEngine.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* MGSimpleNoteEngine */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = MGSimpleNoteEngine;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AA41B11911BE6C3900410288 /* MGSNObject.h */,
+				AA41B11A11BE6C3900410288 /* MGSNObject.m */,
+				AA41B11711BE6C3900410288 /* MGSimplenoteLogin.h */,
+				AA41B11811BE6C3900410288 /* MGSimplenoteLogin.m */,
+				AA41B11511BE6C3900410288 /* MGSimplenoteIndex.h */,
+				AA41B11611BE6C3900410288 /* MGSimplenoteIndex.m */,
+				AA41B11111BE6C3900410288 /* MGSimplenote.h */,
+				AA41B11211BE6C3900410288 /* MGSimplenote.m */,
+				AA41B11311BE6C3900410288 /* MGSimplenoteCredentialStore.h */,
+				AA41B11411BE6C3900410288 /* MGSimplenoteCredentialStore.m */,
+				AA41B10211BE6C2E00410288 /* Sync */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA41B12B11BE6C6B00410288 /* SBJSON */,
+				AA41B10F11BE6C3900410288 /* MGCallback.h */,
+				AA41B11011BE6C3900410288 /* MGCallback.m */,
+				AA41B11B11BE6C3900410288 /* NSData+Base64.h */,
+				AA41B11C11BE6C3900410288 /* NSData+Base64.m */,
+				AA747D9E0F9514B9006C5449 /* MGSimplenoteEngine_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		AA41B10211BE6C2E00410288 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				AA41B10311BE6C2E00410288 /* MGSimplenoteController.h */,
+				AA41B10411BE6C2E00410288 /* MGSimplenoteController.m */,
+				AA41B10511BE6C2E00410288 /* MGSimplenoteSyncSession.h */,
+				AA41B10611BE6C2E00410288 /* MGSimplenoteSyncSession.m */,
+				AA41B10711BE6C2E00410288 /* MGSimplenoteSyncStatus.h */,
+				AA41B10811BE6C2E00410288 /* MGSimplenoteSyncStatus.m */,
+			);
+			name = Sync;
+			path = Classes/Sync;
+			sourceTree = "<group>";
+		};
+		AA41B12B11BE6C6B00410288 /* SBJSON */ = {
+			isa = PBXGroup;
+			children = (
+				AA41B12C11BE6C6B00410288 /* JSON.h */,
+				AA41B12D11BE6C6B00410288 /* NSObject+SBJSON.h */,
+				AA41B12E11BE6C6B00410288 /* NSObject+SBJSON.m */,
+				AA41B12F11BE6C6B00410288 /* NSString+SBJSON.h */,
+				AA41B13011BE6C6B00410288 /* NSString+SBJSON.m */,
+				AA41B13111BE6C6B00410288 /* SBJSON.h */,
+				AA41B13211BE6C6B00410288 /* SBJSON.m */,
+				AA41B13311BE6C6B00410288 /* SBJsonBase.h */,
+				AA41B13411BE6C6B00410288 /* SBJsonBase.m */,
+				AA41B13511BE6C6B00410288 /* SBJsonParser.h */,
+				AA41B13611BE6C6B00410288 /* SBJsonParser.m */,
+				AA41B13711BE6C6B00410288 /* SBJsonWriter.h */,
+				AA41B13811BE6C6B00410288 /* SBJsonWriter.m */,
+			);
+			path = SBJSON;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* MGSimplenoteEngine_Prefix.pch in Headers */,
+				AA41B10911BE6C2E00410288 /* MGSimplenoteController.h in Headers */,
+				AA41B10B11BE6C2E00410288 /* MGSimplenoteSyncSession.h in Headers */,
+				AA41B10D11BE6C2E00410288 /* MGSimplenoteSyncStatus.h in Headers */,
+				AA41B11D11BE6C3900410288 /* MGCallback.h in Headers */,
+				AA41B11F11BE6C3900410288 /* MGSimplenote.h in Headers */,
+				AA41B12111BE6C3900410288 /* MGSimplenoteCredentialStore.h in Headers */,
+				AA41B12311BE6C3900410288 /* MGSimplenoteIndex.h in Headers */,
+				AA41B12511BE6C3900410288 /* MGSimplenoteLogin.h in Headers */,
+				AA41B12711BE6C3900410288 /* MGSNObject.h in Headers */,
+				AA41B12911BE6C3900410288 /* NSData+Base64.h in Headers */,
+				AA41B13911BE6C6B00410288 /* JSON.h in Headers */,
+				AA41B13A11BE6C6B00410288 /* NSObject+SBJSON.h in Headers */,
+				AA41B13C11BE6C6B00410288 /* NSString+SBJSON.h in Headers */,
+				AA41B13E11BE6C6B00410288 /* SBJSON.h in Headers */,
+				AA41B14011BE6C6B00410288 /* SBJsonBase.h in Headers */,
+				AA41B14211BE6C6B00410288 /* SBJsonParser.h in Headers */,
+				AA41B14411BE6C6B00410288 /* SBJsonWriter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* MGSimplenoteEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "MGSimplenoteEngine" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MGSimplenoteEngine;
+			productName = MGSimpleNoteEngine;
+			productReference = D2AAC07E0554694100DB518D /* libMGSimplenoteEngine.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "MGSimplenoteEngine" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* MGSimpleNoteEngine */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* MGSimplenoteEngine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA41B10A11BE6C2E00410288 /* MGSimplenoteController.m in Sources */,
+				AA41B10C11BE6C2E00410288 /* MGSimplenoteSyncSession.m in Sources */,
+				AA41B10E11BE6C2E00410288 /* MGSimplenoteSyncStatus.m in Sources */,
+				AA41B11E11BE6C3900410288 /* MGCallback.m in Sources */,
+				AA41B12011BE6C3900410288 /* MGSimplenote.m in Sources */,
+				AA41B12211BE6C3900410288 /* MGSimplenoteCredentialStore.m in Sources */,
+				AA41B12411BE6C3900410288 /* MGSimplenoteIndex.m in Sources */,
+				AA41B12611BE6C3900410288 /* MGSimplenoteLogin.m in Sources */,
+				AA41B12811BE6C3900410288 /* MGSNObject.m in Sources */,
+				AA41B12A11BE6C3900410288 /* NSData+Base64.m in Sources */,
+				AA41B13B11BE6C6B00410288 /* NSObject+SBJSON.m in Sources */,
+				AA41B13D11BE6C6B00410288 /* NSString+SBJSON.m in Sources */,
+				AA41B13F11BE6C6B00410288 /* SBJSON.m in Sources */,
+				AA41B14111BE6C6B00410288 /* SBJsonBase.m in Sources */,
+				AA41B14311BE6C6B00410288 /* SBJsonParser.m in Sources */,
+				AA41B14511BE6C6B00410288 /* SBJsonWriter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/MGSimpleNoteEngine.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MGSimplenoteEngine_Prefix.pch;
+				HEADER_SEARCH_PATHS = "";
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = MGSimplenoteEngine;
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/MGSimpleNoteEngine.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MGSimplenoteEngine_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = MGSimplenoteEngine;
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "MGSimplenoteEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "MGSimplenoteEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
