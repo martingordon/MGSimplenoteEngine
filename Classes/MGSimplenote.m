@@ -207,7 +207,8 @@ enum NoteActions {
 - (NSData *)HTTPBodyForActionID:(ActionID)action {
 	switch (action) {
 		case PushToRemote:
-			return encodeData([self.text dataUsingEncoding:NSUTF8StringEncoding]);
+//			return encodeData([self.text dataUsingEncoding:NSUTF8StringEncoding]);
+			return [NSData Base64Encode: self.text];
 	}
 	return [super HTTPBodyForActionID:action];
 }

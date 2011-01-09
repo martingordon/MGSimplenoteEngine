@@ -107,7 +107,9 @@ enum LoginActions {
 
 - (NSData *)HTTPBodyForActionID:(ActionID)action {
 	if (action == Login) {
-		return encodeData([[NSString stringWithFormat:@"email=%@&password=%@", self.email, self.password] dataUsingEncoding:NSUTF8StringEncoding]);
+//		return encodeData([[NSString stringWithFormat:@"email=%@&password=%@", self.email, self.password] dataUsingEncoding:NSUTF8StringEncoding]);
+        return [NSData Base64Encode: [NSString stringWithFormat:@"email=%@&password=%@", self.email, self.password]];
+
 	}
 	return [super HTTPBodyForActionID:action];
 }

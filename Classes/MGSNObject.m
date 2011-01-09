@@ -82,8 +82,8 @@ enum MGSNObjectActions {
 
 
 - (void)addObserver:(id)obj forSelector:(SEL)selector success:(SEL)success failure:(SEL)failure {
-	[[NSNotificationCenter defaultCenter] addObserver:obj selector:success name:[self successNotificationNameForSelector:selector] object:self];
-	[[NSNotificationCenter defaultCenter] addObserver:obj selector:failure name:[self failureNotificationNameForSelector:selector] object:self];
+	[[NSNotificationCenter defaultCenter] addObserver:obj selector:success name:[self successNotificationNameForSelector:selector] object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:obj selector:failure name:[self failureNotificationNameForSelector:selector] object:nil];
 }
 
 

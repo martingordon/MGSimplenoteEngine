@@ -4,19 +4,10 @@
 //
 //  Created by Martin Gordon on 4/5/10.
 //  Copyright 2010 Martin Gordon. All rights reserved.
+//  Rewritten 01-08-2011 by Mike Cohen to fix 512-byte truncation
 //
 
 #import "NSData+Base64.h"
-
-int encode(unsigned s_len, char *src, unsigned d_len, char *dst);
-
-NSData *encodeData(NSData *input) {
-	char encodeArray[512];
-	memset(encodeArray, '\0', sizeof(encodeArray));
-	
-	encode([input length], (char *)[input bytes], sizeof(encodeArray), encodeArray);
-	return [NSData dataWithBytes:encodeArray length:strlen(encodeArray)];
-}
 
 
 /**
@@ -29,36 +20,48 @@ static char base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 "0123456789"
 "+/";
 
-int encode(unsigned s_len, char *src, unsigned d_len, char *dst) {
-	unsigned triad;
-	
-	for (triad = 0; triad < s_len; triad += 3) {
-		unsigned long int sr;
-		unsigned byte;
-		
-		for (byte = 0; (byte<3)&&(triad+byte<s_len); ++byte) {
-			sr <<= 8;
-			sr |= (*(src+triad+byte) & 0xff);
-		}
-		
-		sr <<= (6-((8*byte)%6))%6; /*shift left to next 6bit alignment*/
-		
-		if (d_len < 4) return 1; /* error - dest too short */
-		
-		*(dst+0) = *(dst+1) = *(dst+2) = *(dst+3) = '=';
-		switch(byte) {
-			case 3:
-				*(dst+3) = base64[sr&0x3f];
-				sr >>= 6;
-			case 2:
-				*(dst+2) = base64[sr&0x3f];
-				sr >>= 6;
-			case 1:
-				*(dst+1) = base64[sr&0x3f];
-				sr >>= 6;
-				*(dst+0) = base64[sr&0x3f];
-		}
-		dst += 4; d_len -= 4;
-	}
-	return 0;
+@implementation NSData (Base64)
+
+
++ (NSData*)Base64Encode: (NSString*)string
+{
+    NSMutableData *dst = nil;
+    NSData *srcData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    if (nil != srcData) {
+        const unsigned char *srcBytes = [srcData bytes];
+        unsigned srcLength = [srcData length];
+        dst = [NSMutableData dataWithCapacity:srcLength];
+        unsigned triad;
+        
+        for (triad = 0; triad < srcLength; triad += 3) {
+            unsigned long int sr;
+            unsigned byte;
+            unsigned char tmp[4];
+            
+            for (byte = 0; (byte<3)&&(triad+byte<srcLength); ++byte) {
+                sr <<= 8;
+                sr |= (*(srcBytes+triad+byte) & 0xff);
+            }
+            
+            sr <<= (6-((8*byte)%6))%6; /*shift left to next 6bit alignment*/
+                        
+            tmp[0] = tmp[1] = tmp[2] = tmp[3] = '=';
+            switch(byte) {
+                case 3:
+                    tmp[3] = base64[sr&0x3f];
+                    sr >>= 6;
+                case 2:
+                    tmp[2] = base64[sr&0x3f];
+                    sr >>= 6;
+                case 1:
+                    tmp[1] = base64[sr&0x3f];
+                    sr >>= 6;
+                    tmp[0] = base64[sr&0x3f];
+            }
+            [dst appendBytes: tmp length: 4];
+        }
+    }
+    return dst;
 }
+
+@end
