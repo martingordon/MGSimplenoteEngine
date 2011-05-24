@@ -11,6 +11,6 @@
 
 @interface NSData(Base64)
 
-+ (NSData*)Base64Encode: (NSString*)string;
++ (NSData *)base64Encode:(NSString *)string;
 
 @end

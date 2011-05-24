@@ -23,8 +23,7 @@ static char base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 @implementation NSData (Base64)
 
 
-+ (NSData*)Base64Encode: (NSString*)string
-{
++ (NSData *)base64Encode:(NSString *)string {
     NSMutableData *dst = nil;
     NSData *srcData = [string dataUsingEncoding:NSUTF8StringEncoding];
     if (nil != srcData) {
