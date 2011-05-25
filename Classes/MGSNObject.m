@@ -43,7 +43,7 @@ enum MGSNObjectActions {
 
 
 - (NSString *)baseURLString {
-	return @"https://simple-note.appspot.com/api";
+    return @"https://simple-note.appspot.com/api2";
 }
 
 

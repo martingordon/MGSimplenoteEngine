@@ -27,6 +27,7 @@ enum IndexActions {
 @implementation MGSimplenoteIndex
 
 @synthesize contents, fullContents;
+@synthesize length, mark, since;
 
 - (id)init {
 	self = [super init];
@@ -56,17 +57,21 @@ enum IndexActions {
 	NSError *error = nil;
 	SBJSON *parser = [[SBJSON alloc] init];
 	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	NSArray *conts = [parser objectWithString:str];
+	NSDictionary *conts = [parser objectWithString:str];
 	[str release];
+    [parser release];
 	
 	if (error == nil) {
-		NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:[conts count]];
+        NSArray *data = [conts objectForKey:@"data"];
+		NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:[data count]];
 		
-		for (NSDictionary *obj in conts) {
+		for (NSDictionary *obj in data) {
 			[tempArray addObject:[MGSimplenote noteWithDictionary:obj]];
 		}
 		[contents release];
 		contents = [tempArray retain];
+
+        self.mark = [conts objectForKey:@"mark"];
 		[self postSuccessForSelector:@selector(pullFromRemote)];
 	} else {
 		[self pullFromRemoteFailure:error];
@@ -84,7 +89,19 @@ enum IndexActions {
 
 - (NSURL *)URLForActionID:(ActionID)action {
 	NSMutableArray *params = [NSMutableArray arrayWithArray:[self authParams]];
-	
+
+    if (self.since) {
+        [params addObject:[NSString stringWithFormat:@"since=%.5f", [self.since timeIntervalSince1970]]];
+    }
+
+    if (self.mark) {
+        [params addObject:[NSString stringWithFormat:@"mark=%@", self.mark]];
+    }
+
+    if (self.length > 0) {
+        [params addObject:[NSString stringWithFormat:@"length=%d", self.length]];
+    }
+
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?%@", 
 								 [self baseURLString], [self endpointForActionID:action], 
 								 [params componentsJoinedByString:@"&"]]];

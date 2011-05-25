@@ -9,6 +9,7 @@
 #import "MGSimplenote.h"
 #import "MGCallback.h"
 #import "NSData+Base64.h"
+#import "SBJSON.h"
 
 enum NoteActions {
 	PullFromRemote = 0,
@@ -17,28 +18,29 @@ enum NoteActions {
 	ActionCount
 };
 
+@interface MGSimplenote ()
+
+- (NSDictionary *)propertyToRespMapping;
+- (NSString *)partialJSONRepresentation;
+- (void)updateWithResponseDictionary:(NSDictionary *)dict;
+
+@end
+
 @implementation MGSimplenote
 
 @synthesize key, text;
 @synthesize modifyDate, createDate;
 @synthesize deleted;
 
+@synthesize syncNum, version, minVersion;
+@synthesize shareKey, publishKey;
+@synthesize systemTags, tags;
+
+static NSDictionary *propertyToRespMapping = nil;
+
 + (id)noteWithDictionary:(NSDictionary *)dict {
 	MGSimplenote *note = [[[MGSimplenote alloc] init] autorelease];
-	note.key = [dict objectForKey:@"key"];
-	note.text = [dict objectForKey:@"text"];
-
-	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	[formatter setDateFormat:@"y'-'MM'-'dd HH':'mm':'ss'.'SSSSSS"];
-	
-	if ([dict objectForKey:@"modify"] != nil) {
-		note.modifyDate = [formatter dateFromString:[dict objectForKey:@"modify"]];		
-	}
-	if ([dict objectForKey:@"create"] != nil) {
-		note.createDate = [formatter dateFromString:[dict objectForKey:@"create"]];		
-	}
-	[formatter release];
-	note.deleted = [dict objectForKey:@"deleted"];
+    [note updateWithResponseDictionary:dict];
 	return note;
 }
 
@@ -79,6 +81,70 @@ enum NoteActions {
 	[super dealloc];
 }
 
+- (NSDictionary *)propertyToRespMapping {
+    if (!propertyToRespMapping) {
+        propertyToRespMapping = [NSDictionary dictionaryWithObjectsAndKeys:@"key", @"key",
+                                 @"deleted", @"deleted",
+                                 @"modifydate", @"modifyDate",
+                                 @"createdate", @"createDate",
+                                 @"syncnum", @"syncNum",
+                                 @"version", @"version",
+                                 @"minversion", @"minVersion",
+                                 @"sharekey", @"shareKey",
+                                 @"publishkey", @"publishKey",
+                                 @"systemtags", @"systemTags",
+                                 @"tags", @"tags",
+                                 @"content", @"text",
+                                 nil];
+    }
+    return propertyToRespMapping;
+}
+
+- (NSString *)partialJSONRepresentation {
+    NSArray *properties = [NSArray arrayWithObjects:@"deleted", @"modifyDate", @"createDate",
+                           @"version", @"systemTags", @"tags", @"text", nil];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:[properties count]];
+
+    for (NSString *prop in properties) {
+        id value = nil;
+
+        if ([prop isEqualToString:@"modifyDate"] || [prop isEqualToString:@"createDate"]) {
+            value = [NSNumber numberWithDouble:[[self valueForKey:prop] timeIntervalSince1970]];
+        } else {
+            value = [self valueForKey:prop];
+
+            if (value == nil) {
+                value = [NSNull null];
+            }
+        }
+        [dict setObject:value forKey:[[self propertyToRespMapping] objectForKey:prop]];
+    }
+
+    SBJsonWriter *writer = [[SBJsonWriter alloc] init];
+    NSString *json = [writer stringWithObject:dict];
+    [writer release];
+
+    return json;
+}
+
+- (void)updateWithResponseDictionary:(NSDictionary *)dict {
+    for (NSString *prop in [[self propertyToRespMapping] allKeys]) {
+        NSString *respKey = [[self propertyToRespMapping] objectForKey:prop];
+
+        id value = nil;
+
+        if ([prop isEqualToString:@"modifyDate"] || [prop isEqualToString:@"createDate"]) {
+            value = [NSDate dateWithTimeIntervalSince1970:[[dict objectForKey:respKey] doubleValue]];
+        } else {
+            value = [dict objectForKey:respKey];
+        }
+
+        if (value != nil && ![value isEqual:[NSNull null]]) {
+            [self setValue:value forKey:prop];
+        }
+    }
+}
+
 - (void)pullFromRemote {
 	[self callMethodWithActionID:PullFromRemote];
 }
@@ -97,27 +163,14 @@ enum NoteActions {
 		[self postFailureForSelector:@selector(pullFromRemote) withError:[self errorForResponse:resp]];
 		return;
 	}
-	NSDictionary *headers = [resp allHeaderFields];
-	
-	self.key = [headers objectForKey:@"Note-Key"];
-	
-	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	[formatter setDateFormat:@"y'-'MM'-'dd HH':'mm':'ss'.'SSSSSS"];
-	
-	if ([headers objectForKey:@"Note-Modifydate"] != nil) {
-		self.modifyDate = [formatter dateFromString:[headers objectForKey:@"Note-Modifydate"]];
-	}
-	if ([headers objectForKey:@"Note-Createdate"] != nil) {
-		self.createDate = [formatter dateFromString:[headers objectForKey:@"Note-Createdate"]];
-	}
-	[formatter release];
-	
-	self.deleted = [headers objectForKey:@"Note-Deleted"];
-	
-	NSString *incomingText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	self.text = incomingText;
-	[incomingText release];
-	
+
+    SBJSON *parser = [[SBJSON alloc] init];
+	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	NSDictionary *conts = [parser objectWithString:str];
+	[str release];
+    [parser release];
+
+    [self updateWithResponseDictionary:conts];
 	[self postSuccessForSelector:@selector(pullFromRemote)];
 }
 
@@ -127,6 +180,14 @@ enum NoteActions {
 		[self postFailureForSelector:@selector(pushToRemote) withError:[self errorForResponse:resp]];
 		return;
 	}
+
+    SBJSON *parser = [[SBJSON alloc] init];
+	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	NSDictionary *conts = [parser objectWithString:str];
+	[str release];
+    [parser release];
+
+    [self updateWithResponseDictionary:conts];
 	[self postSuccessForSelector:@selector(pushToRemote)];	
 }
 
@@ -168,10 +229,6 @@ enum NoteActions {
 - (NSURL *)URLForActionID:(ActionID)action {
 	NSMutableArray *params = [NSMutableArray arrayWithArray:[self authParams]];
 	
-	if (self.key) {
-		[params addObject:[NSString stringWithFormat:@"key=%@", self.key]];
-	}
-	
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?%@", 
 								 [self baseURLString], [self endpointForActionID:action], 
 								 [params componentsJoinedByString:@"&"]]];
@@ -181,9 +238,13 @@ enum NoteActions {
 - (NSString *)endpointForActionID:(ActionID)action {
 	switch (action) {
 		case PullFromRemote:
-			return @"note";
+			return [NSString stringWithFormat:@"data/%@", self.key];
 		case PushToRemote:
-			return @"note";
+            if (self.key == nil) {
+                return @"data";
+            } else {
+                return [NSString stringWithFormat:@"data/%@", self.key];
+            }
 		case DeleteNote:
 			return @"delete";
 	}
@@ -198,18 +259,16 @@ enum NoteActions {
 		case PushToRemote:
 			return @"POST";
 		case DeleteNote:
-			return @"GET";
+			return @"DELETE";
 	}
 	return [super HTTPMethodForActionID:action];
 }
 
-
 - (NSData *)HTTPBodyForActionID:(ActionID)action {
 	switch (action) {
 		case PushToRemote:
-//			return encodeData([self.text dataUsingEncoding:NSUTF8StringEncoding]);
-			return [NSData Base64Encode: self.text];
-	}
+			return [[self partialJSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
+    }
 	return [super HTTPBodyForActionID:action];
 }
 

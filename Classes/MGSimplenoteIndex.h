@@ -26,6 +26,10 @@
  */
 @interface MGSimplenoteIndex : MGSNObject {
 	NSArray *contents, *fullContents;
+
+    NSInteger length;
+    NSString *mark;
+    NSDate *since;
 }
 
 /**
@@ -37,6 +41,14 @@
 // Retrieves the full note object for contents array.
 // NOT YET IMPLEMENTED
 @property (nonatomic, readonly) NSArray *fullContents;
+
+// The number of records to request from the index. Parameter will be ignored if set to <= 0.
+@property (nonatomic) NSInteger length;
+
+// When the index is pulled, the mark will be auto-populated from the response (nil if no mark).
+@property (nonatomic, copy) NSString *mark;
+
+@property (nonatomic, retain) NSDate *since;
 
 // Retrieves the index from the Simplenote server.
 - (void)pullFromRemote;

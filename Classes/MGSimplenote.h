@@ -32,11 +32,19 @@
 	NSString *key, *text;
 	NSDate *modifyDate, *createDate;
 	NSNumber *deleted;
+
+    NSNumber *syncNum, *version, *minVersion;
+    NSString *shareKey, *publishKey;
+    NSArray *systemTags, *tags;
 }
 
 @property (nonatomic, copy) NSString *key, *text;
 @property (nonatomic, retain) NSDate *modifyDate, *createDate;
 @property (nonatomic, retain) NSNumber *deleted;
+
+@property (nonatomic, retain) NSNumber *syncNum, *version, *minVersion;
+@property (nonatomic, copy) NSString *shareKey, *publishKey;
+@property (nonatomic, retain) NSArray *systemTags, *tags;
 
 + (id)noteWithDictionary:(NSDictionary *)dict;
 
