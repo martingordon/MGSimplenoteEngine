@@ -83,7 +83,7 @@ static NSDictionary *propertyToRespMapping = nil;
 
 - (NSDictionary *)propertyToRespMapping {
     if (!propertyToRespMapping) {
-        propertyToRespMapping = [NSDictionary dictionaryWithObjectsAndKeys:@"key", @"key",
+        propertyToRespMapping = [[NSDictionary dictionaryWithObjectsAndKeys:@"key", @"key",
                                  @"deleted", @"deleted",
                                  @"modifydate", @"modifyDate",
                                  @"createdate", @"createDate",
@@ -95,27 +95,29 @@ static NSDictionary *propertyToRespMapping = nil;
                                  @"systemtags", @"systemTags",
                                  @"tags", @"tags",
                                  @"content", @"text",
-                                 nil];
+                                 nil] retain];
     }
     return propertyToRespMapping;
 }
 
 - (NSString *)partialJSONRepresentation {
     NSArray *properties = [NSArray arrayWithObjects:@"deleted", @"modifyDate", @"createDate",
-                           @"version", @"systemTags", @"tags", @"text", nil];
+                           @"systemTags", @"tags", @"text", nil];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:[properties count]];
 
     for (NSString *prop in properties) {
-        id value = nil;
+        id value = [self valueForKey:prop];
 
-        if ([prop isEqualToString:@"modifyDate"] || [prop isEqualToString:@"createDate"]) {
+        if (([prop isEqualToString:@"modifyDate"] || [prop isEqualToString:@"createDate"]) && value != nil) {
             value = [NSNumber numberWithDouble:[[self valueForKey:prop] timeIntervalSince1970]];
-        } else {
-            value = [self valueForKey:prop];
+        } else if ([prop isEqualToString:@"tags"] && value == nil) {
+            value = [NSArray array];
+        } else if ([prop isEqualToString:@"systemTags"] && value == nil) {
+            value = [NSArray array];
+        }
 
-            if (value == nil) {
-                value = [NSNull null];
-            }
+        if (value == nil) {
+            value = [NSNull null];
         }
         [dict setObject:value forKey:[[self propertyToRespMapping] objectForKey:prop]];
     }
