@@ -59,6 +59,10 @@ enum LoginActions {
 	return [NSString stringWithFormat:@"<%@ authToken:%@>", [super description], self.authToken];
 }
 
+- (NSString *)baseURLString {
+    return @"https://simple-note.appspot.com/api";
+}
+
 - (void)loginSuccessWithResponse:(NSURLResponse *)resp data:(NSData *)data {
 	if ([data length] != 0) {
 		NSString *token = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
