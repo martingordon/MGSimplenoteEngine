@@ -248,7 +248,7 @@ static NSDictionary *propertyToRespMapping = nil;
                 return [NSString stringWithFormat:@"data/%@", self.key];
             }
 		case DeleteNote:
-			return @"delete";
+			return [NSString stringWithFormat:@"data/%@", self.key];
 	}
 	return [super endpointForActionID:action];
 }
