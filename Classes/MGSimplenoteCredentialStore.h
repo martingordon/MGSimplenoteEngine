@@ -21,11 +21,12 @@
 + (NSString *)email;
 + (NSString *)password;
 + (NSString *)authToken;
++ (NSString *)appIdentifier; // e.g. MyApp/0.5.0
 
 + (void)setEmail:(NSString *)email;
 + (void)setPassword:(NSString *)password;
 + (void)setAuthToken:(NSString *)authToken;
-
++ (void)setAppIdentifier:(NSString *)identifier;
 
 
 @end

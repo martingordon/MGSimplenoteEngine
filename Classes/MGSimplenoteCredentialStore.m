@@ -32,6 +32,9 @@
 	return [self defaultValueForKey:NSStringFromSelector(_cmd)];
 }
 
++ (NSString *)appIdentifier {
+	return [self defaultValueForKey:NSStringFromSelector(_cmd)];
+}
 
 + (void)setEmail:(NSString *)val {
 	NSString *sel = NSStringFromSelector(_cmd);
@@ -55,6 +58,14 @@
 	key = [NSString stringWithFormat:@"%@%@", [[key substringToIndex:1] lowercaseString],
 		   [key substringFromIndex:1]];
 	[self setDefaultValue:val forKey:key];
+}
+
++ (void)setAppIdentifier:(NSString *)val{
+	NSString *sel = NSStringFromSelector(_cmd);
+	NSString *key = [sel substringWithRange:NSMakeRange(3, [sel length]-4)];
+	key = [NSString stringWithFormat:@"%@%@", [[key substringToIndex:1] lowercaseString],
+		   [key substringFromIndex:1]];
+	[self setDefaultValue:val forKey:key];	
 }
 
 @end

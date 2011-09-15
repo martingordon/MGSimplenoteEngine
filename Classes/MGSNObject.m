@@ -167,6 +167,11 @@ enum MGSNObjectActions {
 	[req setHTTPMethod:[self HTTPMethodForActionID:action]];
 	[req setHTTPBody:[self HTTPBodyForActionID:action]];
 	
+	// Setting app identifier in user-agent field (see api document)
+	if([MGSimplenoteCredentialStore appIdentifier]){
+		[req setValue:[MGSimplenoteCredentialStore appIdentifier] forHTTPHeaderField:@"User-Agent"];
+	}
+	
 	[self setReceivedData:[NSMutableData data] forActionID:action];
 	[self setConnection:[NSURLConnection connectionWithRequest:req delegate:self] forActionID:action];
 	[[connections objectAtIndex:action] start];
