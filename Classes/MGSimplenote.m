@@ -9,7 +9,7 @@
 #import "MGSimplenote.h"
 #import "MGCallback.h"
 #import "NSData+Base64.h"
-#import "SBJSON.h"
+#import "JSONKit.h"
 
 enum NoteActions {
 	PullFromRemote = 0,
@@ -122,9 +122,7 @@ static NSDictionary *propertyToRespMapping = nil;
         [dict setObject:value forKey:[[self propertyToRespMapping] objectForKey:prop]];
     }
 
-    SBJsonWriter *writer = [[SBJsonWriter alloc] init];
-    NSString *json = [writer stringWithObject:dict];
-    [writer release];
+    NSString *json = [dict JSONString];
 
     return json;
 }
@@ -166,12 +164,9 @@ static NSDictionary *propertyToRespMapping = nil;
 		return;
 	}
 
-    SBJSON *parser = [[SBJSON alloc] init];
-	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	NSDictionary *conts = [parser objectWithString:str];
-	[str release];
-    [parser release];
-
+	id conts = [[JSONDecoder decoder] objectWithData:data];
+	NSAssert([conts isKindOfClass:NSDictionary.class], @"JSON parsing to NSDictionary failed.");
+	
     [self updateWithResponseDictionary:conts];
 	[self postSuccessForSelector:@selector(pullFromRemote)];
 }
@@ -182,12 +177,9 @@ static NSDictionary *propertyToRespMapping = nil;
 		[self postFailureForSelector:@selector(pushToRemote) withError:[self errorForResponse:resp]];
 		return;
 	}
-
-    SBJSON *parser = [[SBJSON alloc] init];
-	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	NSDictionary *conts = [parser objectWithString:str];
-	[str release];
-    [parser release];
+	
+	id conts = [[JSONDecoder decoder] objectWithData:data];
+	NSAssert([conts isKindOfClass:NSDictionary.class], @"JSON parsing to NSDictionary failed.");
 
     [self updateWithResponseDictionary:conts];
 	[self postSuccessForSelector:@selector(pushToRemote)];	
