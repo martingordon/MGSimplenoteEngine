@@ -9,7 +9,7 @@
 #import "MGSimplenoteIndex.h"
 #import "MGCallback.h"
 #import "MGSimplenote.h"
-#import "JSON.h"
+#import "JSONKit.h"
 
 enum IndexActions {
 	PullFromRemote = 0,
@@ -54,12 +54,9 @@ enum IndexActions {
 		[self pullFromRemoteFailure:[self errorForResponse:resp]];
 		return;
 	}
-	NSError *error = nil;
-	SBJSON *parser = [[SBJSON alloc] init];
-	NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	NSDictionary *conts = [parser objectWithString:str];
-	[str release];
-    [parser release];
+	NSError *error = nil;	
+	id conts = [[JSONDecoder decoder] objectWithData:data error:&error];
+	NSAssert([conts isKindOfClass:NSDictionary.class], @"JSON parsing to NSDictionary failed.");
 	
 	if (error == nil) {
         NSArray *data = [conts objectForKey:@"data"];
