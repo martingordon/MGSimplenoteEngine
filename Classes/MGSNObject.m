@@ -31,16 +31,9 @@ enum MGSNObjectActions {
 		connections = [[NSMutableArray arrayWithArray:nullArray] retain];
 		responses = [[NSMutableArray arrayWithArray:nullArray] retain];
 		receivedData = [[NSMutableArray arrayWithArray:nullArray] retain];
-		[self updateCredentialsFromStore];
 	}
 	return self;
 }
-
-- (void)updateCredentialsFromStore {
-	authToken = [[MGSimplenoteCredentialStore authToken] retain];
-	email = [[MGSimplenoteCredentialStore email] retain];	
-}
-
 
 - (NSString *)baseURLString {
     return @"https://simple-note.appspot.com/api2";
@@ -162,6 +155,7 @@ enum MGSNObjectActions {
 }
 
 - (void)callMethodWithActionID:(ActionID)action {
+    NSAssert(email, @"Email must not be nil");
 	NSURL *URL = [self URLForActionID:action];
 	NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:URL];
 	[req setHTTPMethod:[self HTTPMethodForActionID:action]];

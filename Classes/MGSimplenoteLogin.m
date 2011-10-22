@@ -38,21 +38,8 @@ enum LoginActions {
 		
 		[self setCallback:callback forActionID:Login];
 		[callback release];
-		
-		[self updateCredentialsFromStore];
 	}
 	return self;
-}
-
-- (void)updateCredentialsFromStore {
-	[super updateCredentialsFromStore];
-	password = [[MGSimplenoteCredentialStore password] copy];
-}
-
-- (void)saveCredentialsToStore {
-	[MGSimplenoteCredentialStore setEmail:self.email];
-	[MGSimplenoteCredentialStore setPassword:self.password];
-	[MGSimplenoteCredentialStore setAuthToken:self.authToken];
 }
 
 - (NSString *)description {
@@ -68,7 +55,6 @@ enum LoginActions {
 		NSString *token = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 		self.authToken = token;
 		[token release];
-		[self saveCredentialsToStore];
 		
 		[self postSuccessForSelector:@selector(login)];
 	} else {
@@ -118,6 +104,7 @@ enum LoginActions {
 
 
 - (void)login {
+    NSAssert(password && [password length] > 0, @"Password has to be set!");
 	[self callMethodWithActionID:Login];
 }
 
