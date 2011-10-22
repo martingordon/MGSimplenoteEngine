@@ -33,7 +33,4 @@
  */
 - (void)login;
 
-// Saves the object's auth token, email and password to the credential store.
-- (void)saveCredentialsToStore;
-
 @end
