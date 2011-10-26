@@ -23,6 +23,7 @@ enum NoteActions {
 - (NSDictionary *)propertyToRespMapping;
 - (NSString *)partialJSONRepresentation;
 - (void)updateWithResponseDictionary:(NSDictionary *)dict;
+- (NSString*)escapedString:(NSString*)string;
 
 @end
 
@@ -124,7 +125,7 @@ static NSDictionary *propertyToRespMapping = nil;
 
     NSString *json = [dict JSONString];
 
-    return json;
+    return [self escapedString:json];
 }
 
 - (void)updateWithResponseDictionary:(NSDictionary *)dict {
@@ -266,5 +267,18 @@ static NSDictionary *propertyToRespMapping = nil;
 	return [super HTTPBodyForActionID:action];
 }
 
+#pragma -
+#pragma Private
+
+- (NSString*)escapedString:(NSString*)string{
+	
+	NSString *escapedString = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,
+																				 (CFStringRef)string,
+																				 NULL,
+																				 (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+																				 kCFStringEncodingUTF8 );
+	
+	return escapedString;
+}
 
 @end
