@@ -56,6 +56,10 @@
 		F6A3B0D91391660200B3DE05 /* MGSNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B11A11BE6C3900410288 /* MGSNObject.m */; };
 		F6A3B0DA1391660200B3DE05 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AA41B11C11BE6C3900410288 /* NSData+Base64.m */; };
 		F6A3B0E11391660500B3DE05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		F6B24F2514584D4700DD2234 /* NSString+URLEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = F6B24F2314584D4700DD2234 /* NSString+URLEncode.h */; };
+		F6B24F2614584D4700DD2234 /* NSString+URLEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = F6B24F2314584D4700DD2234 /* NSString+URLEncode.h */; };
+		F6B24F2714584D4700DD2234 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B24F2414584D4700DD2234 /* NSString+URLEncode.m */; };
+		F6B24F2814584D4700DD2234 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B24F2414584D4700DD2234 /* NSString+URLEncode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +90,8 @@
 		F614888A14221E2E009B4419 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		F6240CD6139137B9002A4B50 /* MGSimplenoteEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MGSimplenoteEngine.h; sourceTree = "<group>"; };
 		F6A3B0B8139165E200B3DE05 /* libMGSimplenoteEngine(OSX).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libMGSimplenoteEngine(OSX).a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6B24F2314584D4700DD2234 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncode.h"; path = "Classes/NSString+URLEncode.h"; sourceTree = "<group>"; };
+		F6B24F2414584D4700DD2234 /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncode.m"; path = "Classes/NSString+URLEncode.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,8 @@
 				AA41B11B11BE6C3900410288 /* NSData+Base64.h */,
 				AA41B11C11BE6C3900410288 /* NSData+Base64.m */,
 				AA747D9E0F9514B9006C5449 /* MGSimplenoteEngine_Prefix.pch */,
+				F6B24F2314584D4700DD2234 /* NSString+URLEncode.h */,
+				F6B24F2414584D4700DD2234 /* NSString+URLEncode.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -210,6 +218,7 @@
 				AA41B12511BE6C3900410288 /* MGSimplenoteLogin.h in Headers */,
 				AA41B12711BE6C3900410288 /* MGSNObject.h in Headers */,
 				AA41B12911BE6C3900410288 /* NSData+Base64.h in Headers */,
+				F6B24F2514584D4700DD2234 /* NSString+URLEncode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +237,7 @@
 				F6A3B0C8139165FB00B3DE05 /* MGSNObject.h in Headers */,
 				F6A3B0C9139165FB00B3DE05 /* NSData+Base64.h in Headers */,
 				F6A3B0BE139165F600B3DE05 /* MGSimplenoteEngine.h in Headers */,
+				F6B24F2614584D4700DD2234 /* NSString+URLEncode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +335,7 @@
 				AA41B12A11BE6C3900410288 /* NSData+Base64.m in Sources */,
 				F614888B14221E2E009B4419 /* JSONKit.h in Sources */,
 				F614888C14221E2E009B4419 /* JSONKit.m in Sources */,
+				F6B24F2714584D4700DD2234 /* NSString+URLEncode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +355,7 @@
 				F6A3B0DA1391660200B3DE05 /* NSData+Base64.m in Sources */,
 				F614888D14221E2E009B4419 /* JSONKit.h in Sources */,
 				F614888E14221E2E009B4419 /* JSONKit.m in Sources */,
+				F6B24F2814584D4700DD2234 /* NSString+URLEncode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

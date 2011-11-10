@@ -9,6 +9,7 @@
 #import "MGSNObject.h"
 #import "MGCallback.h"
 #import "MGSimplenoteCredentialStore.h"
+#import "NSString+URLEncode.h"
 
 enum MGSNObjectActions {
 	ActionCount = 0
