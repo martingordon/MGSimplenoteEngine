@@ -10,6 +10,7 @@
 #import "MGCallback.h"
 #import "NSData+Base64.h"
 #import "JSONKit.h"
+#import "NSString+URLEncode.h"
 
 enum NoteActions {
 	PullFromRemote = 0,
@@ -125,7 +126,7 @@ static NSDictionary *propertyToRespMapping = nil;
 
     NSString *json = [dict JSONString];
 
-    return [self escapedString:json];
+    return [json urlEncoded];
 }
 
 - (void)updateWithResponseDictionary:(NSDictionary *)dict {
@@ -265,20 +266,6 @@ static NSDictionary *propertyToRespMapping = nil;
 			return [[self partialJSONRepresentation] dataUsingEncoding:NSUTF8StringEncoding];
     }
 	return [super HTTPBodyForActionID:action];
-}
-
-#pragma -
-#pragma Private
-
-- (NSString*)escapedString:(NSString*)string{
-	
-	NSString *escapedString = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,
-																				 (CFStringRef)string,
-																				 NULL,
-																				 (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-																				 kCFStringEncodingUTF8 );
-	
-	return escapedString;
 }
 
 @end
